@@ -1,0 +1,340 @@
+.toolTip {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+}
+
+.toolTip > section {
+  background: var(--bg-2);
+  box-shadow: 0px 0px 10px 0px #33445926;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16.34px;
+  text-align: left;
+  padding: 5px;
+  border-radius: 8px;
+  width: max-content;
+  opacity: 0;
+  white-space: pre-line;
+}
+
+.tooltipBottom {
+  top: 110%;
+  position: absolute;
+  transform: scaleY(0) translateY(-10px); /* Escala inicial en 0 y desplazamiento hacia arriba */
+  transform-origin: top; /* Origina la transformación desde la parte superior */
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tooltipBottom::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  margin-left: -5px;
+  transform: rotate(180deg);
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--bg-2) transparent transparent transparent;
+}
+
+.tooltipTop {
+  bottom: 120%;
+  position: absolute;
+  transform: scaleY(0) translateY(10px);
+  transform-origin: bottom;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tooltipTop::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--bg-2) transparent transparent transparent;
+}
+
+.tooltipLeft {
+  right: 105%;
+  top: 0;
+  position: absolute;
+
+  transform: scaleX(0) translateX(10px); /* Escala inicial en 0 y desplazamiento hacia la derecha */
+  transform-origin: right; /* Origina la transformación desde la derecha */
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tooltipLeft::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--bg-2);
+}
+
+.tooltipRight {
+  left: 105%;
+  top: 0;
+  position: absolute;
+  transform: scaleX(0) translateX(-10px);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tooltipRight::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent var(--bg-2) transparent transparent;
+}
+
+.show {
+  transform: scale(1) translate(0, 0) !important; /* Escala completa y se posiciona en su lugar */
+  opacity: 1 !important;
+}
+
+/* Posiciones intermedias - Right */
+.tooltipRightTop {
+  left: 105%;
+  bottom: 0;
+  position: absolute;
+  transform: scaleX(0) translateX(-10px);
+  transform-origin: left bottom;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tooltipRightTop::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  bottom: 10px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent var(--bg-2) transparent transparent;
+}
+
+.tooltipRightBottom {
+  left: 105%;
+  top: 0;
+  position: absolute;
+  transform: scaleX(0) translateX(-10px);
+  transform-origin: left top;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tooltipRightBottom::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 10px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent var(--bg-2) transparent transparent;
+}
+
+/* Posiciones intermedias - Left */
+.tooltipLeftTop {
+  right: 105%;
+  bottom: 0;
+  position: absolute;
+  transform: scaleX(0) translateX(10px);
+  transform-origin: right bottom;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tooltipLeftTop::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  bottom: 10px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--bg-2);
+}
+
+.tooltipLeftBottom {
+  right: 105%;
+  top: 0;
+  position: absolute;
+  transform: scaleX(0) translateX(10px);
+  transform-origin: right top;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tooltipLeftBottom::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 10px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--bg-2);
+}
+
+/* Posiciones intermedias - Top */
+.tooltipTopLeft {
+  bottom: 120%;
+  right: 0;
+  position: absolute;
+  transform: scaleY(0) translateY(10px);
+  transform-origin: bottom right;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tooltipTopLeft::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: 10px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--bg-2) transparent transparent transparent;
+}
+
+.tooltipTopRight {
+  bottom: 120%;
+  left: 0;
+  position: absolute;
+  transform: scaleY(0) translateY(10px);
+  transform-origin: bottom left;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tooltipTopRight::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 10px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--bg-2) transparent transparent transparent;
+}
+
+/* Posiciones intermedias - Bottom */
+.tooltipBottomLeft {
+  top: 110%;
+  right: 0;
+  position: absolute;
+  transform: scaleY(0) translateY(-10px);
+  transform-origin: top right;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tooltipBottomLeft::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  transform: rotate(180deg);
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--bg-2) transparent transparent transparent;
+}
+
+.tooltipBottomRight {
+  top: 110%;
+  left: 0;
+  position: absolute;
+  transform: scaleY(0) translateY(-10px);
+  transform-origin: top left;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tooltipBottomRight::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  transform: rotate(180deg);
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--bg-2) transparent transparent transparent;
+}
+
+.portalTooltip {
+  position: fixed;
+  z-index: 9999;
+  background: var(--bg-2);
+  box-shadow: 0px 0px 10px 0px #33445926;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16.34px;
+  text-align: left;
+  padding: 6px 8px;
+  border-radius: 8px;
+  width: max-content;
+  max-width: min(320px, calc(100vw - 16px));
+  white-space: pre-line;
+  opacity: 0;
+  transform: scale(0.96);
+  transform-origin: center;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.showPortal {
+  transform: scale(1) !important;
+  opacity: 1 !important;
+}
+
+.portalTooltip::after {
+  content: "";
+  position: absolute;
+  border-width: 5px;
+  border-style: solid;
+}
+
+.arrowTop::after {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+  border-color: var(--bg-2) transparent transparent transparent;
+}
+
+.arrowBottom::after {
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-color: var(--bg-2) transparent transparent transparent;
+}
+
+.arrowLeft::after {
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-color: transparent var(--bg-2) transparent transparent;
+}
+
+.arrowRight::after {
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-color: transparent transparent transparent var(--bg-2);
+}

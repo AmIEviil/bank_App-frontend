@@ -20,14 +20,29 @@ export const TabNav = ({
   extra,
   privateMode,
 }: TabNavProps) => {
+  const handleKeyDown = (e: React.KeyboardEvent, idx: number) => {
+    let next = idx;
+    if (e.key === "ArrowRight") next = (idx + 1) % options.length;
+    else if (e.key === "ArrowLeft") next = (idx - 1 + options.length) % options.length;
+    else return;
+    e.preventDefault();
+    onChange(options[next].value);
+  };
+
   return (
-    <nav className={`tab-nav ${privateMode ? "private" : ""}`.trim()}>
-      {options.map((option) => (
+    <nav
+      role="tablist"
+      className={`tab-nav ${privateMode ? "private" : ""}`.trim()}
+    >
+      {options.map((option, idx) => (
         <button
           key={option.value}
           type="button"
+          role="tab"
+          aria-selected={active === option.value}
           className={active === option.value ? "active" : ""}
           onClick={() => onChange(option.value)}
+          onKeyDown={(e) => handleKeyDown(e, idx)}
         >
           {option.label}
         </button>

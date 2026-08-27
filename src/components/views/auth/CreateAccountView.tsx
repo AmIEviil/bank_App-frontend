@@ -19,6 +19,7 @@ interface CreateAccountViewProps {
   onSubmit: (event: BaseSyntheticEvent) => void;
   onChange: (field: keyof RegisterForm, value: string) => void;
   onRutValidityChange: (isValid: boolean) => void;
+  onGoLogin?: () => void;
 }
 
 export const CreateAccountView = ({
@@ -30,12 +31,8 @@ export const CreateAccountView = ({
   onRutValidityChange,
 }: CreateAccountViewProps) => {
   return (
-    <form className="panel form-grid animated-rise" onSubmit={onSubmit}>
-      <h2>Crear cuenta</h2>
-      <p className="subtitle">
-        Registra tu perfil y comienza a centralizar tus gastos e ingresos.
-      </p>
-      <div className="inline-fields">
+    <form className="auth-form-card animated-rise" onSubmit={onSubmit}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
         <TextInput
           label="Nombre"
           value={form.nombre}
@@ -64,13 +61,13 @@ export const CreateAccountView = ({
         error={rutError}
       />
       <PasswordInput
-        label="Password"
+        label="Contraseña"
         value={form.password}
         onChange={(event) => onChange("password", event.target.value)}
-        placeholder="Minimo 8 caracteres"
+        placeholder="Mínimo 8 caracteres"
       />
-      <Button variant="primary" disabled={loading} type="submit">
-        {loading ? "Creando..." : "Crear cuenta"}
+      <Button variant="primary" disabled={loading} type="submit" style={{ marginTop: 4 }}>
+        {loading ? "Creando cuenta…" : "Crear cuenta"}
       </Button>
     </form>
   );

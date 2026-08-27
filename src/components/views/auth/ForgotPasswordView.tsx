@@ -7,6 +7,7 @@ interface ForgotPasswordViewProps {
   loading: boolean;
   onSubmit: (event: BaseSyntheticEvent) => void;
   onEmailChange: (value: string) => void;
+  onGoLogin?: () => void;
 }
 
 export const ForgotPasswordView = ({
@@ -14,12 +15,12 @@ export const ForgotPasswordView = ({
   loading,
   onSubmit,
   onEmailChange,
+  onGoLogin,
 }: ForgotPasswordViewProps) => {
   return (
-    <form className="panel form-grid animated-rise" onSubmit={onSubmit}>
-      <h2>Olvide password</h2>
-      <p className="subtitle">
-        Te generaremos un token temporal para continuar con el reseteo.
+    <form className="auth-form-card animated-rise" onSubmit={onSubmit}>
+      <p style={{ fontSize: 13, color: "var(--ink-2)", marginBottom: 4 }}>
+        Te enviaremos un token temporal para continuar con el reseteo de contraseña.
       </p>
       <TextInput
         label="Email"
@@ -29,8 +30,20 @@ export const ForgotPasswordView = ({
         placeholder="nombre@correo.cl"
       />
       <Button variant="primary" disabled={loading} type="submit">
-        {loading ? "Generando..." : "Generar token"}
+        {loading ? "Generando…" : "Generar token"}
       </Button>
+      {onGoLogin && (
+        <div style={{ textAlign: "center" }}>
+          <button
+            type="button"
+            className="btn-link"
+            onClick={onGoLogin}
+            style={{ fontSize: 12, color: "var(--ink-3)", padding: 0 }}
+          >
+            ← Volver al inicio de sesión
+          </button>
+        </div>
+      )}
     </form>
   );
 };

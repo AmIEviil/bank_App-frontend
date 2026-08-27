@@ -1,5 +1,7 @@
 import { useState } from "react";
 import type { InputHTMLAttributes } from "react";
+import s from "./TextInput.module.css";
+import EyeIcon from "./icons/EyeIcon";
 
 interface PasswordInputProps extends Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -19,20 +21,25 @@ export const PasswordInput = ({
   const inputId = id || label.toLowerCase().replaceAll(/\s+/g, "-");
 
   return (
-    <label htmlFor={inputId}>
+    <label className={s.label} htmlFor={inputId}>
       <span>{label}</span>
-      <div className="password-field">
-        <input id={inputId} type={show ? "text" : "password"} {...props} />
+      <div className={s.passwordField}>
+        <input
+          className={s.input}
+          id={inputId}
+          type={show ? "text" : "password"}
+          {...props}
+        />
         <button
           type="button"
-          className="password-toggle"
           onClick={() => setShow((current) => !current)}
           aria-label={show ? "Ocultar password" : "Mostrar password"}
+          className={s.eyeButton}
         >
-          {show ? "Ocultar" : "Ver"}
+          <EyeIcon open={show} size={24} className={s.eye} color="currentColor"/>
         </button>
       </div>
-      {error ? <small className="field-error">{error}</small> : null}
+      {error ? <small className={s.error}>{error}</small> : null}
     </label>
   );
 };

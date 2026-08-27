@@ -1,0 +1,59 @@
+.modalContent {
+  background: var(--bg-1) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(18px) !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4) !important;
+  color: var(--ink-0) !important;
+  overflow: hidden;
+}
+
+.modalHeader {
+  border-bottom: 1px solid var(--line) !important;
+  padding: 1.25rem 1.5rem !important;
+  background: rgba(124, 243, 196, 0.03) !important;
+}
+
+.modalHeader :global(.modal-title) {
+  font-family: var(--serif) !important;
+  font-weight: 400 !important;
+  font-size: 1.1rem !important;
+  color: var(--ink-0) !important;
+  letter-spacing: -0.01em;
+}
+
+.modalHeader :global(.btn-close) {
+  filter: invert(1) grayscale(1) brightness(1.5) !important;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  padding: 1rem !important;
+  margin: -0.5rem -0.5rem -0.5rem auto !important;
+}
+
+.modalHeader :global(.btn-close:hover) {
+  opacity: 1;
+}
+
+.modalBody {
+  padding: 1.5rem !important;
+  background: transparent !important;
+}
+
+.modalFooter {
+  border-top: 1px solid var(--line) !important;
+  padding: 1.1rem 1.5rem !important;
+  background: rgba(0, 0, 0, 0.15) !important;
+  display: flex !important;
+  gap: 0.75rem !important;
+}
+
+.backdrop {
+  background-color: rgba(4, 6, 13, 0.85) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+@media (max-width: 600px) {
+  .modalContent {
+    border-radius: 14px !important;
+  }
+}

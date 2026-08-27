@@ -6,22 +6,16 @@ export const Snackbar = () => {
   const hideSnackbar = useAppStore((state) => state.hideSnackbar);
 
   useEffect(() => {
-    if (!snackbar.open) {
-      return;
-    }
-
-    const timeout = globalThis.setTimeout(() => {
-      hideSnackbar();
-    }, 3500);
-
-    return () => {
-      globalThis.clearTimeout(timeout);
-    };
+    if (!snackbar.open) return;
+    const timeout = setTimeout(() => hideSnackbar(), 3500);
+    return () => clearTimeout(timeout);
   }, [hideSnackbar, snackbar.open]);
 
-  if (!snackbar.open) {
-    return null;
-  }
+  if (!snackbar.open) return null;
 
-  return <div className={`snackbar snackbar-${snackbar.type}`}>{snackbar.message}</div>;
+  return (
+    <div className="snackbar" role="status" aria-live="polite">
+      <div className={`snackbar-item ${snackbar.type}`}>{snackbar.message}</div>
+    </div>
+  );
 };
